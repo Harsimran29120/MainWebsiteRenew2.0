@@ -1,0 +1,189 @@
+
+<html>
+    <head>
+        <title>BB LIVE </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel='stylesheet' href='./style.css'>
+        <link rel="shortcut icon" href="./logo (1).png" type="image/x-icon">
+        <link href="./google.css" rel="stylesheet" />
+        <script src="./file.js"></script>
+        <script src="./file2.js"></script>
+    </head>
+    <style>
+    html {
+        font-family: Poppins;
+        background: #000;
+        margin: 0;
+        padding: 0;
+    }
+    .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+    }
+    
+    .loading-text {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+    }
+    
+    .loading-text span {
+        display: inline-block;
+        margin: 0 5px;
+        color: #00b3ff;
+        font-family: 'Quattrocento Sans', sans-serif;
+    }
+    
+    .loading-text span:nth-child(1) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 0s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(2) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 0.2s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(3) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 0.4s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(4) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 0.6s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(5) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 0.8s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(6) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 1s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(7) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 1.2s infinite linear alternate;
+    }
+    
+    @keyframes blur-text {
+        0% {
+            filter: blur(0px);
+        }
+        100% {
+            filter: blur(4px);
+        }
+    }
+    
+    .plyr__video-wrapper::before {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+            content: '';
+            height: 45px;
+            width: 45px;
+            background: url('./logo\ \(1\).png') no-repeat;
+            background-size: 45px auto, auto;
+        }
+    
+    </style>
+    <body>
+    <div id="loading" class="loading">
+    <div class="loading-text">
+        <span class="loading-text-words">L</span>
+        <span class="loading-text-words">O</span>
+        <span class="loading-text-words">A</span>
+        <span class="loading-text-words">D</span>
+        <span class="loading-text-words">I</span>
+        <span class="loading-text-words">N</span>
+        <span class="loading-text-words">G</span>
+    </div>
+    </div>
+    <div>
+    <video poster="https://telegra.ph/file/590c0db304bfcc7e6859b.jpg" id="videoContainer"></video>
+    </div>
+    </body>
+    <script>
+    
+    setTimeout(videovisible, 5000)
+    
+    function videovisible() {
+        document.getElementById('loading').style.display = 'none'
+    }
+    
+        const video = document.getElementById("videoContainer");
+        document.addEventListener("DOMContentLoaded", function() {
+            const source = "https://rest-as.ott.kaltura.com/api_v3/service/assetFile/action/playManifest/partnerId/225/assetId/998775/assetType/media/assetFileId/11895083/contextType/PLAYBACK/ks/djJ8MjI1fEROmZTkRhlgq-wzRMY9rhBy54xgHmuhkNisnTy67bGwIqFXFl3rmis_CAIQqTK1foJvZyI1swjO_WOpUZ67Z1SrbfqQi2dUTFzTtlSr-6ZrYVs2gZnKqJCtDcwf-mwGRaS77UIqRyM5u_QuicBC-RXuaC88Q4drj79mwxgdXTdmECmBPpxkSOZtLbcfQ6BmMJo_d6DyogaZhsad4I_PYlbyXgH_HdwDtMZgJqpjuhdnZHVxToC-y_zAjcaPPxPPNNfej6VyE2qGRmiB0ZN5HQ7CzZXhFTPmKzLfMfqf3ADB_2QzmSV1YzHuL4HtQ4GCsz8qurn1shPDiZ5DBfpBwBHuT9TfCm2e8Xp5GSwqlLfEelLdZLHpsT2NXEDAjlmlDdU_lETm9CpH3KdeQJWU3oyz9eRjRAEl-FX5EwgyhEspaHRIBnr3YIw6oTKdiSeZ_x9NcoL12EVq1ZA39OoECvrGrxHckhLMCX_Lwq-PCiJZ/a.mpd";
+            const dash = dashjs.MediaPlayer().create();
+            var defaultOptions = {
+                "autoplay": false,
+                "muted": false,
+                "loop": {
+                    "active": false
+                },
+                "captions": {
+                    "active": true,
+                    "update": true
+                }
+            };
+            dash.initialize(video, source, false);
+            dash.updateSettings({
+                streaming: {
+                    abr: {
+                        autoSwitchBitrate: {
+                            audio: false,
+                            video: false
+                        }
+                    },
+                    fastSwitchEnabled: true,
+                    lowLatencyEnabled: true
+                }
+            });
+            dash.setProtectionData({
+                "com.widevine.alpha": {
+                    "serverURL": "https://udrmv3.kaltura.com/cenc/widevine/license?custom_data=eyJjYV9zeXN0ZW0iOiJodHRwczovL3Jlc3QtYXMub3R0LmthbHR1cmEuY29tL2FwaV92My9zZXJ2aWNlL2Fzc2V0RmlsZS9hY3Rpb24vZ2V0Q29udGV4dD9rcz1kako4TWpJMWZFUk9tWlRrUmhsZ3Etd3pSTVk5cmhCeTU0eGdIbXVoa05pc25UeTY3Ykd3SXFGWEZsM3JtaXNfQ0FJUXFUSzFmb0p2WnlJMXN3ak9fV09wVVo2N1oxU3JiZnFRaTJkVVRGelR0bFNyLTZacllWczJnWm5LcUpDdERjd2YtbXdHUmFTNzdVSXFSeU01dV9RdWljQkMtUlh1YUM4OFE0ZHJqNzltd3hnZFhUZG1FQ21CUHB4a1NPWnRMYmNmUTZCbU1Kb19kNkR5b2dhWmhzYWQ0SV9QWWxieVhnSF9IZHdEdE1aZ0pxcGp1aGRuWkhWeFRvQy15X3pBamNhUFB4UFBOTmZlajZWeUUycUdSbWlCMFpONUhRN0N6WlhoRlRQbUt6TGZNZnFmM0FEQl8yUXptU1YxWXpIdUw0SHRRNEdDc3o4cXVybjFzaFBEaVo1REJmcEJ3Qkh1VDlUZkNtMmU4WHA1R1N3cWxMZkVlbExkWkxIcHNUMk5YRURBamxtbERkVV9sRVRtOUNwSDNLZGVRSldVM295ejllUmpSQUVsLUZYNUV3Z3loRXNwYUhSSUJucjNZSXc2b1RLZGlTZVpfeDlOY29MMTJFVnExWkEzOU9vRUN2ckdyeEhja2hMTUNYX0x3cS1QQ2lKWiZjb250ZXh0VHlwZT1ub25lJmlkPTExODk1MDgzIiwiYWNjb3VudF9pZCI6MTk4MjU1MSwiY29udGVudF9pZCI6IkJCMjRfREFTSCIsImZpbGVzIjoiIiwidXNlcl90b2tlbiI6ImRqSjhNakkxZkVST21aVGtSaGxncS13elJNWTlyaEJ5NTR4Z0htdWhrTmlzblR5NjdiR3dJcUZYRmwzcm1pc19DQUlRcVRLMWZvSnZaeUkxc3dqT19XT3BVWjY3WjFTcmJmcVFpMmRVVEZ6VHRsU3ItNlpyWVZzMmdabktxSkN0RGN3Zi1td0dSYVM3N1VJcVJ5TTV1X1F1aWNCQy1SWHVhQzg4UTRkcmo3OW13eGdkWFRkbUVDbUJQcHhrU09adExiY2ZRNkJtTUpvX2Q2RHlvZ2FaaHNhZDRJX1BZbGJ5WGdIX0hkd0R0TVpnSnFwanVoZG5aSFZ4VG9DLXlfekFqY2FQUHhQUE5OZmVqNlZ5RTJxR1JtaUIwWk41SFE3Q3paWGhGVFBtS3pMZk1mcWYzQURCXzJRem1TVjFZekh1TDRIdFE0R0NzejhxdXJuMXNoUERpWjVEQmZwQndCSHVUOVRmQ20yZThYcDVHU3dxbExmRWVsTGRaTEhwc1QyTlhFREFqbG1sRGRVX2xFVG05Q3BIM0tkZVFKV1Uzb3l6OWVSalJBRWwtRlg1RXdneWhFc3BhSFJJQm5yM1lJdzZvVEtkaVNlWl94OU5jb0wxMkVWcTFaQTM5T29FQ3ZyR3J4SGNraExNQ1hfTHdxLVBDaUpaIiwidWRpZCI6ImI1MmNiYTZlOTAwNTRjMGI4YjIxOTRjMDM5ZjE0MGJkIiwiYWRkaXRpb25hbF9jYXNfc3lzdGVtIjoyMjV9&signature=dMV3K2ZHz4C2z2D8cAJjSLUUZj4%3d"
+                },
+                "com.microsoft.playready": {
+                    "serverURL": "https://udrmv3.kaltura.com/cenc/playready/license?custom_data=eyJjYV9zeXN0ZW0iOiJodHRwczovL3Jlc3QtYXMub3R0LmthbHR1cmEuY29tL2FwaV92My9zZXJ2aWNlL2Fzc2V0RmlsZS9hY3Rpb24vZ2V0Q29udGV4dD9rcz1kako4TWpJMWZFUk9tWlRrUmhsZ3Etd3pSTVk5cmhCeTU0eGdIbXVoa05pc25UeTY3Ykd3SXFGWEZsM3JtaXNfQ0FJUXFUSzFmb0p2WnlJMXN3ak9fV09wVVo2N1oxU3JiZnFRaTJkVVRGelR0bFNyLTZacllWczJnWm5LcUpDdERjd2YtbXdHUmFTNzdVSXFSeU01dV9RdWljQkMtUlh1YUM4OFE0ZHJqNzltd3hnZFhUZG1FQ21CUHB4a1NPWnRMYmNmUTZCbU1Kb19kNkR5b2dhWmhzYWQ0SV9QWWxieVhnSF9IZHdEdE1aZ0pxcGp1aGRuWkhWeFRvQy15X3pBamNhUFB4UFBOTmZlajZWeUUycUdSbWlCMFpONUhRN0N6WlhoRlRQbUt6TGZNZnFmM0FEQl8yUXptU1YxWXpIdUw0SHRRNEdDc3o4cXVybjFzaFBEaVo1REJmcEJ3Qkh1VDlUZkNtMmU4WHA1R1N3cWxMZkVlbExkWkxIcHNUMk5YRURBamxtbERkVV9sRVRtOUNwSDNLZGVRSldVM295ejllUmpSQUVsLUZYNUV3Z3loRXNwYUhSSUJucjNZSXc2b1RLZGlTZVpfeDlOY29MMTJFVnExWkEzOU9vRUN2ckdyeEhja2hMTUNYX0x3cS1QQ2lKWiZjb250ZXh0VHlwZT1ub25lJmlkPTExODk1MDgzIiwiYWNjb3VudF9pZCI6MTk4MjU1MSwiY29udGVudF9pZCI6IkJCMjRfREFTSCIsImZpbGVzIjoiIiwidXNlcl90b2tlbiI6ImRqSjhNakkxZkVST21aVGtSaGxncS13elJNWTlyaEJ5NTR4Z0htdWhrTmlzblR5NjdiR3dJcUZYRmwzcm1pc19DQUlRcVRLMWZvSnZaeUkxc3dqT19XT3BVWjY3WjFTcmJmcVFpMmRVVEZ6VHRsU3ItNlpyWVZzMmdabktxSkN0RGN3Zi1td0dSYVM3N1VJcVJ5TTV1X1F1aWNCQy1SWHVhQzg4UTRkcmo3OW13eGdkWFRkbUVDbUJQcHhrU09adExiY2ZRNkJtTUpvX2Q2RHlvZ2FaaHNhZDRJX1BZbGJ5WGdIX0hkd0R0TVpnSnFwanVoZG5aSFZ4VG9DLXlfekFqY2FQUHhQUE5OZmVqNlZ5RTJxR1JtaUIwWk41SFE3Q3paWGhGVFBtS3pMZk1mcWYzQURCXzJRem1TVjFZekh1TDRIdFE0R0NzejhxdXJuMXNoUERpWjVEQmZwQndCSHVUOVRmQ20yZThYcDVHU3dxbExmRWVsTGRaTEhwc1QyTlhFREFqbG1sRGRVX2xFVG05Q3BIM0tkZVFKV1Uzb3l6OWVSalJBRWwtRlg1RXdneWhFc3BhSFJJQm5yM1lJdzZvVEtkaVNlWl94OU5jb0wxMkVWcTFaQTM5T29FQ3ZyR3J4SGNraExNQ1hfTHdxLVBDaUpaIiwidWRpZCI6ImI1MmNiYTZlOTAwNTRjMGI4YjIxOTRjMDM5ZjE0MGJkIiwiYWRkaXRpb25hbF9jYXNfc3lzdGVtIjoyMjV9&signature=dMV3K2ZHz4C2z2D8cAJjSLUUZj4%3d"
+                }
+            });
+            dash.on("streamInitialized", function() {
+                const availableQualities = dash.getBitrateInfoListFor("video").map((l) => l.height);
+                defaultOptions.quality = {
+                    default: availableQualities[0].height,
+                    options: availableQualities,
+                    forced: true,
+                    onChange: function(newQuality) {
+                        dash.getBitrateInfoListFor("video").forEach((level, levelIndex) => {
+                            if (level.height === newQuality) {
+                                dash.setQualityFor("video", level.qualityIndex);
+                            }
+                        });
+                    },
+                };
+                const player = new Plyr(video, defaultOptions);
+                window.player = player;
+                window.dash = dash;
+            });
+            dash.attachView(video);
+        });
+    </script>
+    </html>
